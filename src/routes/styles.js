@@ -18,12 +18,21 @@ export const wrapper = css`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: ${quaternaryColor};
     font-family: sans-serif;
     text-align: center;
     min-height: 100vh;
-    padding: 0;
+    background-color: ${quaternaryColor};
     margin: 0;
+`
+
+export const container = css`
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+    text-align: center;
 `
 
 export const title = css`
@@ -40,13 +49,20 @@ export const subtitle = css`
     margin: 0;
 `
 
+export const warningText = css`
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: ${tertiaryColor};
+    margin: 0;
+`
+
 export const listWrapper = css`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 500px;
+    max-width: 300px;
     margin: 20px 0;
 `
 
@@ -56,7 +72,7 @@ export const list = css`
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 500px;
+    max-width: 300px;
     margin: 20px 0;
     padding: 0;
     list-style: none;
@@ -68,15 +84,14 @@ export const listItem = css`
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    min-width: 400px;
+    min-width: 300px;
     padding: 10px 20px;
-    margin: 10px 0;
     background-color: ${quaternaryLighterColor};
     border-radius: 5px;
     &:hover {
         background-color: ${quaternaryDarkerColor};
     }
-    @media (max-width: 500px) {
+    @media (max-width: 300px) {
         max-width: 100%;
         min-width: 0;
     }
@@ -110,23 +125,59 @@ export const button = css`
     }   
 `
 
+export const clearButton = css`
+    background-color: ${tertiaryColor};
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    &:hover {
+        background-color: ${tertiaryDarkerColor};
+    }
+`
+
 export const inputgroup = css`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
+    margin-bottom: 20px;
 `
 
 export const input = css`
-    background-color: ${quaternaryColor};
-    border: 1px solid ${secondaryColor};
-    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 300px;
+    margin: 20px 0;
     padding: 10px 20px;
-    margin: 10px 0;
-    font-size: 16px;
+    background-color: ${quaternaryLighterColor};
+    border-radius: 5px;
+    border: none;
     &:focus {
         outline: none;
-        border: 1px solid ${secondaryDarkerColor};
     }
+`
+
+export const innerButton = css`
+    background-color: ${primaryColor};
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    &:hover {
+        background-color: ${primaryDarkerColor};
+    }
+`
+
+export const footerText = css`
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: ${primaryLighterColor};
+    margin: 0;
 `
