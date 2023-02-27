@@ -15,10 +15,12 @@
     button,
     innerButton,
     footerText,
+    footerLink,
   } from "./styles.js";
   import { onMount } from "svelte";
-
+  let ref;
   onMount(() => {
+    ref.focus();
     const storedOptions = localStorage.getItem("options");
     if (storedOptions) {
       options = JSON.parse(storedOptions);
@@ -36,6 +38,7 @@
     localStorage.setItem("options", JSON.stringify(options));
     options = [...options];
     value = "";
+    ref.focus();
   }
 
   function deleteOption(option) {
@@ -57,6 +60,7 @@
     options = [];
     localStorage.setItem("options", JSON.stringify(options));
     options = [...options];
+    ref.focus();
   }
 </script>
 
@@ -82,10 +86,22 @@
       <button class={clearButton} on:click={clearOptions}>Clear</button>
     {/if}
     <form class={inputgroup}>
-      <input class={input} bind:value autofocus placeholder="Add an Option" />
+      <input
+        class={input}
+        bind:value
+        bind:this={ref}
+        placeholder="Add an Option"
+      />
       <button class={innerButton} on:click={addOption} type="submit">Add</button
       >
     </form>
-    <p class={footerText}>Made with ♥ by cinderjk</p>
+    <p class={footerText}>
+      Made with ♥ by <a
+        class={footerLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://github.com/cinderjk">cinderjk</a
+      >
+    </p>
   </div>
 </div>

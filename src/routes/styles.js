@@ -114,14 +114,14 @@ export const listItemButton = css`
     }
 `
 export const button = css`
-    background-color: ${primaryColor};
+    background-color: ${secondaryColor};
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
     border: none;
     cursor: pointer;
     &:hover {
-        background-color: ${primaryDarkerColor};
+        background-color: ${secondaryDarkerColor};
     }   
 `
 
@@ -180,4 +180,15 @@ export const footerText = css`
     font-weight: 400;
     color: ${primaryLighterColor};
     margin: 0;
+`
+
+export const footerLink = css`
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: ${primaryLighterColor};
+    margin: 0;
+    text-decoration: none;
+    &:hover {
+        color: ${primaryColor};
+    }
 `
