@@ -29,9 +29,11 @@
     const storedOptions = localStorage.getItem("options");
     if (storedOptions & (storedOptions !== "[]")) {
       options = JSON.parse(storedOptions);
-    } else {
+    } else if (options.length === 0) {
       options = ["Option 1", "Option 2", "Option 3"];
       localStorage.setItem("options", JSON.stringify(options));
+    } else {
+      error = "Please add an option first";
     }
   });
 

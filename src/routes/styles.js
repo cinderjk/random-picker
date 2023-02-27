@@ -26,7 +26,7 @@ export const wrapper = css`
 `
 
 export const container = css`
-    padding: 40px 0;
+    padding: 40px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -44,6 +44,8 @@ export const title = css`
 
 export const subtitle = css`
     font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    padding: 10px 0;
     font-weight: 400;
     color: ${primaryLighterColor};
     margin: 0;
@@ -206,6 +208,7 @@ export const innerButton = css`
 export const footerText = css`
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
+    font-size: 1rem;
     color: ${primaryLighterColor};
     margin: 0;
 `
