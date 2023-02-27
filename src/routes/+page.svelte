@@ -5,6 +5,9 @@
     title,
     subtitle,
     warningText,
+    modalContainer,
+    modalContent,
+    modalTitle,
     list,
     listItem,
     listItemText,
@@ -19,10 +22,12 @@
   } from "./styles.js";
   import { onMount } from "svelte";
   let ref;
+  let isModalVisible = false;
+
   onMount(() => {
     ref.focus();
     const storedOptions = localStorage.getItem("options");
-    if (storedOptions) {
+    if (storedOptions & (storedOptions !== "[]")) {
       options = JSON.parse(storedOptions);
     } else {
       options = ["Option 1", "Option 2", "Option 3"];
@@ -32,8 +37,19 @@
 
   let options = [];
   let value = "";
+  let selectedOption = "";
+  let error = "";
 
   function addOption() {
+    if (value === "") {
+      error = "Please enter a value";
+      return;
+    }
+    if (options.includes(value)) {
+      error = "This option already exists";
+      return;
+    }
+    error = "";
     options.push(value);
     localStorage.setItem("options", JSON.stringify(options));
     options = [...options];
@@ -45,15 +61,24 @@
     options = options.filter((o) => o !== option);
     localStorage.setItem("options", JSON.stringify(options));
     options = [...options];
+    if (options.length === 0) {
+      error = "Please add an option first";
+    }
   }
 
   function choose() {
     if (options.length === 0) {
-      alert("Please add an option first.");
+      error = "Please add an option first";
       return;
     }
+    error = "";
     const random = Math.floor(Math.random() * options.length);
-    alert(options[random]);
+    isModalVisible = true;
+    selectedOption = options[random];
+  }
+
+  function closeModal() {
+    isModalVisible = false;
   }
 
   function clearOptions() {
@@ -61,6 +86,9 @@
     localStorage.setItem("options", JSON.stringify(options));
     options = [...options];
     ref.focus();
+    if (options.length === 0) {
+      error = "Please add an option first";
+    }
   }
 </script>
 
@@ -80,8 +108,8 @@
         </li>
       {/each}
     </ul>
-    {#if options.length === 0}
-      <p class={warningText}>Please add an option first.</p>
+    {#if error}
+      <p class={warningText}>{error}</p>
     {:else}
       <button class={clearButton} on:click={clearOptions}>Clear</button>
     {/if}
@@ -104,4 +132,13 @@
       >
     </p>
   </div>
+
+  {#if isModalVisible}
+    <div class={modalContainer}>
+      <div class={modalContent}>
+        <div class={modalTitle}>{selectedOption}</div>
+        <button class={button} on:click={closeModal}>Close</button>
+      </div>
+    </div>
+  {/if}
 </div>

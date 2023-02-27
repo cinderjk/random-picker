@@ -56,6 +56,34 @@ export const warningText = css`
     margin: 0;
 `
 
+export const modalContainer = css`
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+
+export const modalContent = css`
+    background-color: white;
+    padding: 2rem;
+    border-radius: 5px;
+`
+
+export const modalTitle = css`
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: ${primaryColor};
+    margin: 0;
+    text-align: center;
+    padding: 0 0 1rem 0;
+`
+
 export const listWrapper = css`
     display: flex;
     flex-direction: column;
